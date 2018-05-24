@@ -34,8 +34,9 @@ def parse_elog(rawelog):
     #split the string up by lines so each line can be checked individually
     listelog = stringelog.split('\n')
 
-    #grabs the date
-
+    #grabs the date for yesterday
+    rawyesterday = datetime.date.today()-datetime.timedelta(1)
+    yesterday = rawyesterday.strftime("%m/%d/%Y")
 
     for elog in listelog:
 
