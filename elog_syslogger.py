@@ -5,6 +5,7 @@ written by: Kurt J. Strosahl (strosahl@jlab.org)
 reads the elog using ipmitool sel elog and writes the results into the syslogger for transfer to graylog
 """
 
+import datetime
 import subprocess
 import logging
 import logging.handlers
@@ -22,17 +23,31 @@ def read_elog():
 
     return stdout
 
+def parse_elog(rawelog):
+    """
+    Takes in the raw elog data and trims it so that only the entries from today carry on to be written to the syslog
+    """
+
+    #converts the bytes to a string
+    stringelog = rawelog.decode("utf-8")
+
+    #split the string up by lines so each line can be checked individually
+    listelog = stringelog.split('\n')
+
+    #grabs the date
+
+
+    for elog in listelog:
+
+
+
 def write_log():
     """
     writes the elog to the system logger
     """
-
-def wipe_elog():
-    """
-    clears the elog after writting it so that subsequent runs don't pick up the same errors
-    """
+    return 0
 
 
 if __name__ == "__main__":
-
+    print("placeholder")
 
