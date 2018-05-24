@@ -27,19 +27,16 @@ def parse_elog(rawelog):
     """
     Takes in the raw elog data and trims it so that only the entries from today carry on to be written to the syslog
     """
-
-    #converts the bytes to a string
-    stringelog = rawelog.decode("utf-8")
-
-    #split the string up by lines so each line can be checked individually
-    listelog = stringelog.split('\n')
+    #converts the raw bytes from ipmitool into a list 
+    listelog = (rawelog.decode("utf-8")).split('\n')
 
     #grabs the date for yesterday
-    rawyesterday = datetime.date.today()-datetime.timedelta(1)
-    yesterday = rawyesterday.strftime("%m/%d/%Y")
+    yesterday = (datetime.date.today()-datetime.timedelta(1)).strftime("%m/%d/%Y")
 
     for elog in listelog:
+        break
 
+    return 0
 
 
 def write_log():
