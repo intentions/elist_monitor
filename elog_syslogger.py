@@ -33,10 +33,13 @@ def parse_elog(rawelog):
     #grabs the date for yesterday
     yesterday = (datetime.date.today()-datetime.timedelta(1)).strftime("%m/%d/%Y")
 
-    for elog in listelog:
-        break
+    dailymessages = []
 
-    return 0
+    for elog in listelog:
+        if yesterday in elog:
+            dailymessages.append(elog)
+
+    return dailymessages
 
 
 def write_log():
