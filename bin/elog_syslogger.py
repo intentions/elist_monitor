@@ -7,8 +7,7 @@ reads the elog using ipmitool sel elog and writes the results into the syslogger
 
 import datetime
 import subprocess
-import logging
-import logging.handlers
+import syslog
 
 def read_elog():
     """
@@ -42,13 +41,24 @@ def parse_elog(rawelog):
     return dailymessages
 
 
-def write_log():
+def write_log(elogentries):
     """
     writes the elog to the system logger
     """
+    if len(elogentries) == 0:
+        return 0
+
+    for elog in elogentries:
+        syslog.syslog(syslog.LOG_INFO, elog)
+
     return 0
 
 
 if __name__ == "__main__":
-    print("placeholder")
+    
+    syslog.syslog(syslog.LOG_INFO, "pulling elog entries")
+
+    rawelog = read_elog()
+    processedelog = parse_elog(rawelog)
+    write_log(processedelog)
 
