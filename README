@@ -1,0 +1,8 @@
+elist_monitor
+written by Kurt J. Strosahl (strosahl@jlab.org)
+
+The purpose of this script is to read the output from ipmitool sel elist and send any messages from the last day to
+the syslog of the local host.
+This is to allow the messages from the cluster to be collected in our central logger (a graylog system).
+
+It requires python3 to run. all packages are part of a standard python deployment.
